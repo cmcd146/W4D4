@@ -1,0 +1,25 @@
+<h1>Create account!</h1>
+
+<% if flash.now[:errors] %>
+<ul>
+  <% flash.now[:errors].each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+<form action="<%= users_url %>" method="post">
+  <%= auth_token %>
+  <label>Email:
+    <input type="text" name="user[email]">
+  </label>
+
+  <br><br>
+
+  <label>Password:
+    <input type="password" name="user[password]">
+  </label>
+
+  <br><br>
+
+  <input type="submit" value="Submit">
+</form>

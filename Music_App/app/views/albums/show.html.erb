@@ -1,0 +1,12 @@
+<h2><%= current_album.title %></h2>
+
+
+<h1>Year: <%= current_album.year %> </h1>
+<h1>Band: <%= Band.find_by(id: current_album.band_id).name %> </h1>
+<% if current_album.live == true %>
+<h1>Live Album</h1>
+<% else %>
+<h1>Studio Album</h1>
+<% end %>
+<a href=" <%= edit_album_url(current_album) %> ">Edit this album</a><br><br>
+<a href=" <%= bands_url %> ">Back to bands</a>

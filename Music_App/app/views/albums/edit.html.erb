@@ -1,0 +1,44 @@
+<h1>Edit this album</h1>
+
+<% if flash.now[:errors] %>
+<ul>
+  <% flash.now[:errors].each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<% end %>
+<form action="<%= album_url(@album) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  </form>
+  <%= auth_token %>
+  <label>Title:
+    <input type="text" name="album[title]" value=" <%= current_album.title %>">
+  </label>
+
+  <br><br>
+
+  <label>Year:
+    <input type="number" name="album[year]" value= "<%= current_album.year %>">
+  </label>
+
+  <br><br>
+  <label>Choose Band
+    <select name="album[band_id]">
+      <option disabled value="">--Please choose a band--</option>
+      <% Band.all.each do |band| %>
+        <option value="<%= band.id %>" <%= band.id == current_album.band_id ? "selected" : "" %> ><%= band.name %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <br><br>
+
+  <input type="radio" name="album[live]" value="true" <%= current_album.live == true ? "checked" : "" %> >Live <br>
+  <input type="radio" name="album[live]" value="false" <%= current_album.live == false ? "checked" : "" %>>Studio <br>
+
+  <br><br>
+
+  <input type="submit" value="Finish">
+
+</form>

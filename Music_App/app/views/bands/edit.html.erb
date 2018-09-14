@@ -1,0 +1,16 @@
+<h1>Edit <%= current_band.name %></h1>
+
+<form action="<%= band_url(current_band) %>" method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="_method" value="patch">
+
+  <label>Band name:
+    <input type="text" name="band[name]" value=" <%= current_band.name %>">
+  </label>
+
+  <br><br>
+
+  <input type="submit" value="Add">
+
+</form>
