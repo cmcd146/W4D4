@@ -24,12 +24,10 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    byebug
     album = Album.find_by(id: params[:id])
     if album.update
       redirect_to album_url(album)
     else
-      byebug
       flash.now[:errors] = album.errors.full_messages
       render :edit
     end

@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_album
-    @current_album = Album.find_by(id: params[:id])
+    @current_album ||= Album.find_by(id: params[:id])
   end
 end
